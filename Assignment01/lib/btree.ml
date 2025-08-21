@@ -1,6 +1,4 @@
-type binary_tree =
-  | Empty
-  | Node of int * binary_tree * binary_tree
+type binary_tree = Empty | Node of int * binary_tree * binary_tree
 
 let rec height = function
   | Empty -> 0
@@ -17,6 +15,6 @@ let level_traversal t =
     match q with
     | [] -> List.rev acc
     | Empty :: qs -> go qs acc
-    | Node (v, l, r) :: qs -> go (qs @ [l; r]) (v :: acc)
+    | Node (v, l, r) :: qs -> go (qs @ [ l; r ]) (v :: acc)
   in
-  go [t] []
+  go [ t ] []

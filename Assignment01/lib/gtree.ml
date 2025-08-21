@@ -1,6 +1,4 @@
-type 'a gtree =
-  | Empty
-  | Node of 'a list * 'a gtree list
+type 'a gtree = Empty | Node of 'a list * 'a gtree list
 
 let rec height = function
   | Empty -> 0
@@ -11,9 +9,9 @@ let rec inorder = function
   | Empty -> []
   | Node (ks, cs) ->
       let rec go ks cs =
-        match ks, cs with
-        | [], [c_last] -> inorder c_last
-        | k::ks', c::cs' -> inorder c @ [k] @ go ks' cs'
+        match (ks, cs) with
+        | [], [ c_last ] -> inorder c_last
+        | k :: ks', c :: cs' -> inorder c @ [ k ] @ go ks' cs'
         | _ -> []
       in
       go ks cs
@@ -29,16 +27,16 @@ let rec postorder = function
 (* basic insert guided by comparator; no balancing *)
 let insert cmp x t =
   let rec ins = function
-    | Empty -> Node ([x], [Empty; Empty])
+    | Empty -> Node ([ x ], [ Empty; Empty ])
     | Node (ks, cs) ->
         let rec find_i i = function
           | [] -> i
-          | k::ks' -> if cmp x k < 0 then i else find_i (i+1) ks'
+          | k :: ks' -> if cmp x k < 0 then i else find_i (i + 1) ks'
         in
         let i = find_i 0 ks in
         let rec upd j = function
           | [] -> [] (* assume well-formed *)
-          | c::cs' -> if j = 0 then ins c :: cs' else c :: upd (j-1) cs'
+          | c :: cs' -> if j = 0 then ins c :: cs' else c :: upd (j - 1) cs'
         in
         Node (ks, upd i cs)
   in
