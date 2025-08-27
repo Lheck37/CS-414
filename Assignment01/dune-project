@@ -1,4 +1,10 @@
 (lang dune 3.16)
+
 (name assignment01)
 (generate_opam_files true)
 
+(package
+ (name assignment01)
+ (synopsis "Assignment 01 for CS 414")
+ (description "Peano arithmetic, binary tree traversals, and general tree functions in OCaml")
+ (depends ocaml dune))
