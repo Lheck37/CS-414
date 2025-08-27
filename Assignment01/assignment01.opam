@@ -3,7 +3,7 @@ synopsis: "Assignment 01 for CS 414"
 description: """
 Peano arithmetic, binary tree traversals, and general tree functions in OCaml.
 """
-maintainer: ["loganheck@example.com"]
+maintainer: ["daleheck37@gmail.com"]
 authors: ["Logan Heck"]
 license: "MIT"
 depends: [
