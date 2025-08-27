@@ -1,13 +1,30 @@
 # CS 414 — Assignment01
 
 ## Build
-    dune build
+cd Assignment01
+dune build
 
-## Run
-    dune exec assignment01
+## Run (demo)
+dune exec ./_build/default/src/treedemo.exe
 
-## Files
-- lib/nat.ml    (Peano: add/mul/div)
-- lib/btree.ml  (prune, level_traversal)
-- lib/gtree.ml  (general tree: height, traversals, insert)
-- bin/main.ml   (tiny checks)
+## Test
+dune runtest
+
+## Layout
+Assignment01/
+  dune-project
+  assignment01.opam
+  src/
+    dune
+    treedemo.ml
+  tree/
+    dune
+    tree.ml
+  test/
+    dune
+    test_treedemo.ml
+
+## Notes
+- Level traversal uses lists as a queue.
+- Formatting via .ocamlformat.
+- Build artifacts are ignored via .gitignore.
