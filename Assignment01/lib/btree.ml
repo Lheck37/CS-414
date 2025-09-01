@@ -1,21 +1,24 @@
-(* binary tree type *)
-type binary_tree =
-  | Empty
-  | Node of int * binary_tree * binary_tree
-
-(* compute height of tree *)
-let rec height = function
-  | Empty -> 0
-  | Node (_, l, r) -> 1 + max (height l) (height r)
-
-(* remove all leaves *)
-let rec prune = function
-  | Empty -> Empty
-  | Node (_, Empty, Empty) -> Empty
-  | Node (v, l, r) -> Node (v, prune l, prune r)
-
-(* level-order (breadth-first) traversal *)
+(* level-by-level traversal: int list list *)
 let level_traversal t =
+  let rec aux current acc =
+    match current with
+    | [] -> List.rev acc
+    | nodes ->
+      let values, next =
+        List.fold_right
+          (fun node (vals, nxt) ->
+             match node with
+             | Empty -> (vals, nxt)
+             | Node (v, l, r) -> (v :: vals, l :: r :: nxt))
+          nodes
+          ([], [])
+      in
+      aux next (values :: acc)
+  in
+  aux [t] []
+
+(* optional: keep a flat BFS for comparison *)
+let bfs_flat t =
   let rec go q acc =
     match q with
     | [] -> List.rev acc
