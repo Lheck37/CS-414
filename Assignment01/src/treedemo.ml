@@ -6,12 +6,14 @@ let a_bintree =
     Bintree.Tree.Empty
     values
 
-(* helper to print list-of-lists like [[10]; [5; 15]; [3; 7]] *)
-let show_levels lvls =
-  lvls
-  |> List.map (fun lvl ->
-       "[" ^ (lvl |> List.map string_of_int |> String.concat "; ") ^ "]")
-  |> String.concat "; "
+(* kinda hacky printing for list of lists *)
+let rec show_levels = function
+  | [] -> ""
+  | [lvl] ->
+      "[" ^ String.concat ";" (List.map string_of_int lvl) ^ "]"
+  | lvl :: rest ->
+      "[" ^ String.concat ";" (List.map string_of_int lvl) ^ "]"
+      ^ ";" ^ show_levels rest
 
 let () =
   (* print the whole tree *)
@@ -25,3 +27,4 @@ let () =
 
   print_endline "Pruned:";
   print_endline (Bintree.Tree.string_of_tree (Bintree.Tree.prune a_bintree))
+
