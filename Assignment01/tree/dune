@@ -1,5 +1,0 @@
-(library
- (name bintree)
- (public_name assignment01.bintree)
- (modules tree))
-
