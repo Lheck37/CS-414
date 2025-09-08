@@ -11,7 +11,7 @@ for t in ["(256) 555-1212", "256-555-1212", "5551212"]:
     print("Phone:", t, "->", bool(re.match(pattern_phone, t)))
 
 # 3) Floating point numbers with optional sign/decimal
-pattern_float = r'^[+-]?(\d+(\.\d*)?|\.\d+)$'
+pattern_float = r'^[+-]?(?:\d+(?:\.\d*)?|\.\d+)$'
 for t in ["3.14", "-0.5", "+42", ".", "abc"]:
     print("Float:", t, "->", bool(re.match(pattern_float, t)))
 
