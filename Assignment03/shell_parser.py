@@ -16,6 +16,9 @@ segments   ::= segment { "/" segment } ;
 segment    ::= name8 ;
 
 filename   ::= name8 "." ext3 ;
+name8      ::= letter { letter } ;      # 1..8 letters (checked in parser)
+ext3       ::= letter letter letter ;   # exactly 3 letters
+letter     ::= "A".."Z" | "a".."z" ;
 
 # Tokens (terminals):  LS, CD, CAT, PRINT, EXEC, SLASH, DOT, IDENT, EOF
 # Nonterminals (variables): command, ls_cmd, cd_cmd, cat_cmd, print_cmd, exec_cmd,
