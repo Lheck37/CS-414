@@ -1,0 +1,14 @@
+ls
+ls /
+ls docs
+cd
+cd /
+cd games
+cat readme.txt
+print report.prn
+exec game.bin
+# errors
+cat bad.tx
+cat toolongname.ext
+ls //
+
