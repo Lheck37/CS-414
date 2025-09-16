@@ -1,0 +1,17 @@
+# happy paths
+set $A = 2 + 3*4
+echo $A
+ls $A
+cd $A
+cat readme.txt
+print $A
+exec game.bin
+set $B = ( $A + 8 ) / 2
+echo $B
+
+# errors
+set $C = (2 + )     # parse error
+ls //               # empty segment
+cat toolongname.ext # name > 8
+cat bad.tx          # ext not 3
+
