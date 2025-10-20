@@ -1,1 +1,7 @@
+# Assignment 05 – Exploring Questions of Type
 
+**Question 1:** Implemented a BST in C++ using `std::variant` and `std::visit` to emulate OCaml-style pattern matching.
+
+**Question 2:** Created an OCaml `'a zipper` type showing bidirectional movement and parametric polymorphism.
+
+References: Module 05 Parts A–G notes.
