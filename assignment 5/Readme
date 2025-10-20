@@ -1,7 +1,13 @@
-# Assignment 05 – Exploring Questions of Type
+### Output for Question 2
 
-**Question 1:** Implemented a BST in C++ using `std::variant` and `std::visit` to emulate OCaml-style pattern matching.
+OCaml REPL test session:
 
-**Question 2:** Created an OCaml `'a zipper` type showing bidirectional movement and parametric polymorphism.
-
-References: Module 05 Parts A–G notes.
+# #use "question2_zipper_list.ml";;
+# let z = { left = [1]; focus = Some 2; right = [3;4] };;
+val z : int zipper = {left = [1]; focus = Some 2; right = [3; 4]}
+# let z2 = move_right z;;
+val z2 : int zipper = {left = [2; 1]; focus = Some 3; right = [4]}
+# focus z2;;
+- : int option = Some 3
+# let z3 = move_left z2;;
+val z3 : int zipper = {left = [1]; focus = Some 2; right = [3; 4]}
