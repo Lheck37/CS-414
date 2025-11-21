@@ -1,0 +1,38 @@
+Assignment 07 – Fun With Objects
+
+CS 414 — Strategy Pattern in C++ and OCaml
+Dale Heck
+
+Overview
+
+This assignment was all about taking the Strategy Pattern — something normally shown in OOP — and rebuilding it in two totally different ways: once in C++ using polymorphism, and once in OCaml using higher-order functions and modules. The idea is basically to show how you can swap algorithms at runtime depending on which “strategy” you plug in.
+
+What’s in this folder
+
+Here are the files I included:
+
+C++
+
+Strategy Pattern.cpp
+My full C++ program that uses an abstract SortStrategy class with three strategies (QuickSort, MergeSort, BubbleSort). The SortContext holds a pointer to whichever strategy I want to use and calls it on the same vector of numbers.
+I also included timing output to show the different sort speeds.
+
+Assignment 7 Sorting Pattern Output.pdf
+This is just the screenshot/output showing that all the C++ strategies work.
+
+OCaml
+
+Sort.ml
+This file contains my sorting functions: quicksort, mergesort, and a simple bubble sort. They are normal OCaml functions that take a list and return a sorted list.
+I use the higher-order function sort_with so I can swap the sorting strategy by passing in the function I want.
+
+Sort_context.ml
+This file shows the “functor version” of the strategy idea. It has:
+
+a module type SORT
+
+concrete modules like Quick
+
+a functor SortContext that takes a sorting module and produces a context that can use that strategy
+
+It basically mimics what the C++ version does, just in the OCaml style.
